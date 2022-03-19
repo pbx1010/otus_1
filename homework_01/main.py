@@ -4,14 +4,15 @@
 """
 
 
-def power_numbers():
+def power_numbers(lst):
     """
     функция, которая принимает N целых чисел,
     и возвращает список квадратов этих чисел
     >>> power_numbers(1, 2, 5, 7)
     <<< [1, 4, 25, 49]
     """
-
+    result = [number**2 for number in lst]
+    return result
 
 # filter types
 ODD = "odd"
