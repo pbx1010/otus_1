@@ -19,7 +19,8 @@ ODD = "odd"
 EVEN = "even"
 PRIME = "prime"
 
-def simple(number):
+
+def is_prime(number):
     z = 0
     i = 2
     while i <= number:
@@ -44,7 +45,7 @@ def filter_numbers(lst, arg):
             lst.pop(0)
     elif arg == PRIME:
         while len(lst) >= 1:
-            if simple(lst[0]) == lst[0]:
+            if is_prime(lst[0]) == lst[0]:
                 lst_out.append(lst[0])
             lst.pop(0)
     return lst_out
