@@ -1,12 +1,17 @@
 """
 Домашнее задание №1
 Функции и структуры данных
+
+
+
+def power_numbers(*lst):
+    result = [number ** 2 for number in lst]
+    return result
 """
 
 
-def power_numbers(lst):
-    result = [number ** 2 for number in lst]
-    return result
+def power_numbers(*numbers):
+    return list(map(lambda x: x ** 2, numbers))
 
     """
     функция, которая принимает N целых чисел,
@@ -47,8 +52,9 @@ def filter_numbers(lst, arg):
             lst.pop(0)
     elif arg == PRIME:
         while len(lst) >= 1:
-            if is_prime(lst[0]) == lst[0]:
-                lst_out.append(lst[0])
+            if lst[0] > 1:
+                if is_prime(lst[0]) == lst[0]:
+                    lst_out.append(lst[0])
             lst.pop(0)
     return lst_out
 
