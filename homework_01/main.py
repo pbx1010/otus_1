@@ -10,10 +10,6 @@ def power_numbers(*lst):
     return [number ** 2 for number in lst]
 
 
-#def power_numbers(*numbers):
-#    return list(map(lambda x: x ** 2, numbers))
-
-
     # функция, которая принимает N целых чисел,
     # и возвращает список квадратов этих чисел
     # >>> power_numbers(1, 2, 5, 7)
@@ -25,39 +21,6 @@ def power_numbers(*lst):
 ODD = "odd"
 EVEN = "even"
 PRIME = "prime"
-
-
-# def is_prime(number):
-#     z = 0
-#     i = 2
-#     while i <= number:
-#         if number % i == 0 and i <= number:
-#             z += 1
-#         i += 1
-#     if z <= 1:
-#         return number
-#
-#
-# def filter_numbers(lst, arg):
-#     lst_out = []
-#     if arg == ODD:
-#         while len(lst) >= 1:
-#             if lst[0] % 2 != 0 :
-#                 lst_out.append(lst[0])
-#             lst.pop(0)
-#     elif arg == EVEN:
-#         while len(lst) >= 1:
-#             if lst[0] % 2 == 0:
-#                 lst_out.append(lst[0])
-#             lst.pop(0)
-#     elif arg == PRIME:
-#         while len(lst) >= 1:
-#             if lst[0] > 1:
-#                 if is_prime(lst[0]) == lst[0]:
-#                     lst_out.append(lst[0])
-#             lst.pop(0)
-#     return lst_out
-
 
 def prime(number):
     z = 0
@@ -74,19 +37,16 @@ def prime(number):
         return False
 
 def odd(in_num):
-    if(in_num % 2) == 0:
-        return True
-    else:
-        return False
-
-def even(in_num):
     if(in_num % 2) != 0:
         return True
     else:
         return False
 
-
-# out_filter = filter(filter_odd_num, numbers)
+def even(in_num):
+    if(in_num % 2) == 0:
+        return True
+    else:
+        return False
 
 def filter_numbers(lst, arg):
     lst_out = []
@@ -96,7 +56,7 @@ def filter_numbers(lst, arg):
         lst_out = filter(even,lst)
     elif arg == PRIME:
         lst_out = filter(prime,lst)
-    return lst_out
+    return list(lst_out)
 
     
     # """
