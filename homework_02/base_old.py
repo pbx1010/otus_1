@@ -30,10 +30,7 @@ class Vehicle(ABC):
             # exceptions (LowFuelError)
         return ValueError
 
-    def test_start_ok(self, fuel):
-        print("30", car1.fuel)
-        assert car1.fuel > 0
-        assert car1.started is False
+
 
 
 
