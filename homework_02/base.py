@@ -10,10 +10,10 @@ class Vehicle(ABC):
         self.started = started
 
     def start(self):
-        if not self.started and self.fuel > 0:
-            self.started = True
+        if self.started != True and self.fuel <= 0:
+            raise ValueError("Нет топлива")
         else:
-            pass
-        https: // www.youtube.com / watch?v = -Zdu4ntX_DU
+            # raise LowFuelError
+            raise ValueError("Нет топлива")
 
 
