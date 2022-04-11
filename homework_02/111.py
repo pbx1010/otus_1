@@ -1,6 +1,9 @@
 from abc import ABC
 #from homework_02.exceptions import LowFuelError, NotEnoughFuel
 
+#- доработайте базовый класс `base.Vehicle`:
+#- добавьте атрибуты `weight`, `started`, `fuel`, `fuel_consumption` со значениями по умолчанию
+#- добавьте инициализатор для установки `weight`, `fuel`, `fuel_consumption`
 
 class Vehicle(ABC):
 
@@ -31,6 +34,15 @@ class Vehicle(ABC):
             raise ValueError("NotEnoughFuel")
         else:
             self.fuel -= distance*self.fuel_consumption
+
+
+class Car(Vehicle):
+
+    def __init__(self,engine):
+        self.engine=engine
+
+    def set_engine(self,engine):
+        self.car
 
 
 car2=Vehicle()
