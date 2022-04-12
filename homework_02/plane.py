@@ -10,9 +10,14 @@
 """
 
 from homework_02.base import Vehicle
-#from base import Vehicle
+from homework_02.exceptions import CargoOverload
+
 
 class Plane(Vehicle):
 
-    def __init__(self, max_cargo):
-        pass
+    def __init__(self, weight, fuel, fuel_consumption):
+        super().__init__(weight, fuel, fuel_consumption)
+        self.cargo = None
+
+    def load_cargo(self,cargo_weight):
+        CargoOverload
