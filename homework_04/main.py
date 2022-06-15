@@ -13,8 +13,10 @@
 - закрытие соединения с БД
 """
 # from models import created_db_tables, save_post_in_db,save_user_in_db
+
+
 from models import create_pg_docker,created_db_tables, cmd, save_post_in_db,save_user_in_db
-from jsonplaceholder_requests import USERS_DATA_URL, POSTS_DATA_URL, fetch_json
+from  jsonplaceholder import USERS_DATA_URL, POSTS_DATA_URL, fetch_json
 import asyncio
 
 async def async_main():
