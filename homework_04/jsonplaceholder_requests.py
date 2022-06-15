@@ -10,6 +10,5 @@ async def fetch_json(url):
             return await response.json()
 
 if __name__ == '__main__':
-    asyncio.get_event_loop().run_until_complete(fetch_json(USERS_DATA_URL))
-
-#asyncio.run(fetch_json(USERS_DATA_URL))
+    # asyncio.get_event_loop().run_until_complete(fetch_json(USERS_DATA_URL))
+    asyncio.run(fetch_json(USERS_DATA_URL))
