@@ -26,7 +26,6 @@ async def async_main():
     await save_post_in_db(post_data)
 
 
-
 def main():
     asyncio.run(async_main())
 
