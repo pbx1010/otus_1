@@ -1,4 +1,3 @@
-
 from datetime import datetime
 
 from loguru import logger
@@ -18,7 +17,7 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 
-PG_ASYNC_CONN_URI = 'postgresql+asyncpg://username:passwd!@localhost/postgres'
+PG_ASYNC_CONN_URI = 'postgresql+asyncpg://username:passwd!@localhost/blog'
 
 engine = create_async_engine(PG_ASYNC_CONN_URI, echo=False)
 
