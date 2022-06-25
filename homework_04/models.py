@@ -19,7 +19,7 @@ from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 
 PG_ASYNC_CONN_URI = 'postgresql+asyncpg://username:passwd!@localhost/blog'
 
-engine = create_async_engine(PG_ASYNC_CONN_URI, echo=False)
+engine = create_async_engine(PG_ASYNC_CONN_URI, echo=True)
 
 Base = declarative_base()
 
