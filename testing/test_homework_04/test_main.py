@@ -11,8 +11,8 @@ from sqlalchemy.orm import selectinload, joinedload
 
 fake = Faker()
 
-module_models = homework.models
 module_main = homework.main
+module_models = homework.models
 module_jsonplaceholder_requests = homework.jsonplaceholder_requests
 
 pytestmark = pytest.mark.asyncio
