@@ -8,7 +8,7 @@ def client():
     try:
         app = module_app.app
     except AttributeError:
-        raise pytest.fail("skip testing homework_05 due to lack of Flask `app` in the `main.py`")
+        raise pytest.fail("skip testing homework_05 due to lack of Flask `app` in the `main_orig.py`")
 
     app.config['TESTING'] = True
 
