@@ -19,7 +19,7 @@ from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 
 PG_ASYNC_CONN_URI = 'postgresql+asyncpg://username:passwd!@localhost/blog'
 
-engine = create_async_engine(PG_ASYNC_CONN_URI, echo=False)
+engine = create_async_engine(PG_ASYNC_CONN_URI, echo=True)
 
 Base = declarative_base()
 
@@ -32,6 +32,7 @@ async def create_pg_docker(cmd):
      result = await asyncio.create_subprocess_shell(cmd)
      await result.communicate()
      logger.info('____pg docker rdy')
+
 
 
 async def created_db_tables():
