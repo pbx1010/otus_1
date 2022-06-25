@@ -27,15 +27,18 @@ Session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
 cmd = 'docker compose up -d'
 
+
 async def create_pg_docker(cmd):
      result = await asyncio.create_subprocess_shell(cmd)
      await result.communicate()
      logger.info('____pg docker rdy')
 
+
 async def created_db_tables():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
         await conn.run_sync(Base.metadata.create_all)
+
 
 async def save_user_in_db(u_data):
     async with Session() as session:
@@ -56,6 +59,7 @@ async def save_post_in_db(p_data):
                 user_id = post['userId']
                 post = Post(title=title, description=description, user_id=user_id)
                 session.add(post)
+
 
 class User(Base):
     __tablename__ = 'user'
