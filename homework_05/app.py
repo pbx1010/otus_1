@@ -11,7 +11,7 @@
 в навигационную панель добавьте ссылки на главную страницу / и на страницу /about/ при помощи url_for
 """
 
-from flask import Flask, request, render_template, url_for
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
