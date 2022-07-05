@@ -10,5 +10,5 @@ async def fetch_json(url):
         async with session.get(url) as response:
             return await response.json()
 
-if __name__ == '__main__':
-    asyncio.run(fetch_json(USERS_DATA_URL))
+#if __name__ == '__main__':
+#    asyncio.run(fetch_json(USERS_DATA_URL))
