@@ -3,6 +3,7 @@ from datetime import datetime
 from loguru import logger
 
 import asyncio
+import asyncpg
 
 from sqlalchemy import (
     Column,
@@ -29,10 +30,9 @@ cmd = 'docker compose up -d'
 
 
 async def create_pg_docker(cmd):
-     result = await asyncio.create_subprocess_shell(cmd)
-     await result.communicate()
-     logger.info('____pg docker rdy')
-
+    result = await asyncio.create_subprocess_shell(cmd)
+    await result.communicate()
+    logger.info('____pg docker rdy')
 
 
 async def created_db_tables():
