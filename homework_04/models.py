@@ -25,13 +25,13 @@ from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 PG_ASYNC_CONN_URI = 'postgresql+asyncpg://username:passwd!@localhost/blog'
 
 # создаем движок
-engine = create_async_engine(PG_ASYNC_CONN_URI, echo=True)
+engine = create_async_engine(PG_ASYNC_CONN_URI, echo=False)
 
 # создаем метод описания БД (Создаем базовый класс для декларативных определений классов.)
 Base = declarative_base()
 
 # создаем сессию (Фабрика sessionmaker генерирует новые объекты Session при вызове)
-Session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=True)
+Session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
 # запускаем докер, вызвав команду в консоли используя create_subprocess_shell(cmd)
 cmd = 'docker compose up -d'

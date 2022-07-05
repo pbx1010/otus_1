@@ -1,3 +1,4 @@
+
 import pytest
 
 # import homework package and skip the whole test if not available
@@ -11,8 +12,8 @@ from sqlalchemy.orm import selectinload, joinedload
 
 fake = Faker()
 
-module_main = homework.main
 module_models = homework.models
+module_main = homework.main
 module_jsonplaceholder_requests = homework.jsonplaceholder_requests
 
 pytestmark = pytest.mark.asyncio
@@ -55,8 +56,8 @@ def check_data_match(items_from_db, items_from_remote, args_mapping: dict):
 async def test_main(users_data, posts_data):
     await module_main.async_main()
 
-    stmt_query_posts = select(module_models.Post).options(joinedload(module_models.Post.user))
     stmt_query_users = select(module_models.User).options(selectinload(module_models.User.posts))
+    stmt_query_posts = select(module_models.Post).options(joinedload(module_models.Post.user))
 
     users = []
     posts = []
