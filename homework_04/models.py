@@ -31,7 +31,7 @@ engine = create_async_engine(PG_ASYNC_CONN_URI, echo=True)
 Base = declarative_base()
 
 # создаем сессию (Фабрика sessionmaker генерирует новые объекты Session при вызове)
-Session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
+Session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=True)
 
 # запускаем докер, вызвав команду в консоли используя create_subprocess_shell(cmd)
 cmd = 'docker compose up -d'
