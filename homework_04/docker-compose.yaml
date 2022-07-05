@@ -11,4 +11,6 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./db-data/pg-data:/var/lib/postgresql/data/ # persist data even if container shuts down
+      - pg-data:/var/lib/postgresql/data/pgdata
+volumes:
+  pg-data:
