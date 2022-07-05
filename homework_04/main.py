@@ -15,6 +15,7 @@
 # from models import created_db_tables, save_post_in_db,save_user_in_db
 
 import asyncio
+import asyncpg
 
 from jsonplaceholder_requests import USERS_DATA_URL, POSTS_DATA_URL, fetch_json
 
