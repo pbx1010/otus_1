@@ -1,4 +1,3 @@
-
 import pytest
 
 # import homework package and skip the whole test if not available
