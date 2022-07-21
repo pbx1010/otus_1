@@ -10,12 +10,12 @@ from datetime import datetime
 app = Flask(__name__)
 app.config.update(
     ENV="development",
-    SECRET_KEY="qwertytrewsupersecret",
+    # SECRET_KEY="qwertytrewsupersecret",
     SQLALCHEMY_TRACK_MODIFICATIONS=False,
-    SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://username:passwd!@localhost:5432/blog",
+    SQLALCHEMY_DATABASE_URI="postgresql+pg8000://username:passwd!@localhost:5432/blog",
 )
 db = SQLAlchemy(app)
-engine = create_engine("postgresql+psycopg2://username:passwd!@localhost:5432/blog")
+engine = create_engine("postgresql+pg8000://username:passwd!@localhost:5432/blog")
 session = sessionmaker(bind=engine)
 
 
