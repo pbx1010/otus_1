@@ -12,15 +12,11 @@ from sqlalchemy import (
 )
 
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
-
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 
 PG_ASYNC_CONN_URI = 'postgresql+asyncpg://username:passwd!@localhost/blog'
-
-engine = create_async_engine(PG_ASYNC_CONN_URI, echo=False)
-
+engine = create_async_engine(PG_ASYNC_CONN_URI, echo=True)
 Base = declarative_base()
-
 Session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
 cmd = 'docker compose up -d'
@@ -30,10 +26,12 @@ async def create_pg_docker(cmd):
     await result.communicate()
     logger.info('____pg docker rdy')
 
+
 async def created_db_tables():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
         await conn.run_sync(Base.metadata.create_all)
+
 
 async def save_user_in_db(u_data):
     async with Session() as session:
@@ -43,7 +41,6 @@ async def save_user_in_db(u_data):
                 email = user['email']
                 user = User(name=name, email=email)
                 session.add(user)
-
 
 
 # cоздаем ф-ю, которая скачивает с сайта посты и сохраняет их в БД
@@ -83,7 +80,8 @@ class Post(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String, nullable='', default='', server_default='')
     description = Column(String, nullable='', default='', server_default='')
-    user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    user = Column(Integer, ForeignKey('user.id'), nullable=False)
+#   user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
     users = relationship('User', back_populates='posts')
 
     def __str__(self):
