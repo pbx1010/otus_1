@@ -48,8 +48,9 @@ async def save_user_in_db(u_data):
         async with session.begin():
             for user in u_data:
                 name = user['name']
+                username = user['username']
                 email = user['email']
-                user = User(name=name, email=email)
+                user = User(name=name, username=username, email=email)
                 session.add(user)
 
 
@@ -59,9 +60,9 @@ async def save_post_in_db(p_data):
         async with session.begin():
             for post in p_data:
                 title = post['title']
-                description = post['body']
+                body = post['body']
                 user_id = post['userId']
-                post = Post(title=title, description=description, user_id=user_id)
+                post = Post(title=title, description=body, user_id=user_id)
                 session.add(post)
 
 
