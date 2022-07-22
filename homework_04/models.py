@@ -19,13 +19,16 @@ engine = create_async_engine(PG_ASYNC_CONN_URI, echo=True)
 Base = declarative_base()
 Session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
-# cmd = 'docker compose up -d'
-#
-#
-# async def create_pg_docker(cmd):
-#     result = await asyncio.create_subprocess_shell(cmd)
-#     await result.communicate()
-#     logger.info('____pg docker rdy')
+
+cmd = 'docker compose up -d'
+
+
+async def create_pg_docker(cmd):
+    result = await asyncio.create_subprocess_shell(cmd)
+    await result.communicate()
+
+
+#   logger.info('____pg docker rdy')
 
 
 async def created_db_tables():
