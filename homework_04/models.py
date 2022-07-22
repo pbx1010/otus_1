@@ -23,7 +23,7 @@ Base = declarative_base()
 
 Session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
-# cmd = 'docker compose up -d'
+cmd = 'docker compose up -d'
 
 async def create_pg_docker(cmd):
     result = await asyncio.create_subprocess_shell(cmd)
@@ -83,7 +83,6 @@ class Post(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String, nullable='', default='', server_default='')
     description = Column(String, nullable='', default='', server_default='')
-
     user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
     users = relationship('User', back_populates='posts')
 
