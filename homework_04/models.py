@@ -84,8 +84,8 @@ class Post(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String, nullable='', default='', server_default='')
     description = Column(String, nullable='', default='', server_default='')
-    user = Column(Integer, ForeignKey('user.id'), nullable=False)
-    #   user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    # user = Column(Integer, ForeignKey('user.id'), nullable=False)
+    user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
     users = relationship('User', back_populates='posts')
 
     def __str__(self):
