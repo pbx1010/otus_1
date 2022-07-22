@@ -71,8 +71,9 @@ class User(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False, default='', server_default='')
+    username = Column(String, nullable=False, default='', server_default='')
     email = Column(String, nullable=False, default='', server_default='')
-    created_at = Column(DateTime, nullable=False, default=datetime.utcnow, server_default=func.now())
+    # created_at = Column(DateTime, nullable=False, default=datetime.utcnow, server_default=func.now())
 
     posts = relationship('Post', back_populates='user')
 
@@ -87,11 +88,12 @@ class User(Base):
 class Post(Base):
     __tablename__ = 'posts'
 
+    user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
     id = Column(Integer, primary_key=True)
     title = Column(String, nullable='', default='', server_default='')
-    description = Column(String, nullable='', default='', server_default='')
-    # user = Column(Integer, ForeignKey('user.id'), nullable=False)
-    user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    body = Column(String, nullable='', default='', server_default='')
+
+
     user = relationship('User', back_populates='posts')
 
     def __str__(self):
