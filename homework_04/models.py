@@ -21,7 +21,7 @@ from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 PG_ASYNC_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") \
                     or "postgresql+asyncpg://username:passwd!@localhost/blog"
 
-engine = create_async_engine(PG_ASYNC_CONN_URI, echo=True)
+engine = create_async_engine(PG_ASYNC_CONN_URI, echo=False)
 Base = declarative_base()
 Session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
