@@ -19,12 +19,13 @@ engine = create_async_engine(PG_ASYNC_CONN_URI, echo=True)
 Base = declarative_base()
 Session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
-cmd = 'docker compose up -d'
-
-async def create_pg_docker(cmd):
-    result = await asyncio.create_subprocess_shell(cmd)
-    await result.communicate()
-    logger.info('____pg docker rdy')
+# cmd = 'docker compose up -d'
+#
+#
+# async def create_pg_docker(cmd):
+#     result = await asyncio.create_subprocess_shell(cmd)
+#     await result.communicate()
+#     logger.info('____pg docker rdy')
 
 
 async def created_db_tables():
@@ -81,7 +82,7 @@ class Post(Base):
     title = Column(String, nullable='', default='', server_default='')
     description = Column(String, nullable='', default='', server_default='')
     user = Column(Integer, ForeignKey('user.id'), nullable=False)
-#   user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    #   user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
     users = relationship('User', back_populates='posts')
 
     def __str__(self):
