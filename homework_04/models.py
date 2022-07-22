@@ -74,7 +74,7 @@ class User(Base):
     email = Column(String, nullable=False, default='', server_default='')
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow, server_default=func.now())
 
-    posts = relationship('Post', back_populates='users')
+    posts = relationship('Post', back_populates='user')
 
     def __str__(self):
         return f'{self.__class__.__name__}(id={self.id}, name={self.name!r}, email={self.email},' \
