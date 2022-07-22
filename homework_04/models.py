@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 from loguru import logger
 import asyncio
@@ -14,8 +15,12 @@ from sqlalchemy import (
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 
-PG_ASYNC_CONN_URI = 'postgresql+asyncpg://username:passwd!@localhost/blog'
-engine = create_async_engine(PG_ASYNC_CONN_URI, echo=True)
+# PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://postgres:password@localhost/postgres"
+
+# PG_ASYNC_CONN_URI = 'postgresql+asyncpg://username:passwd!@localhost/blog'
+PG_ASYNC_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://postgres:password@localhost/postgres"
+
+engine = create_async_engine(PG_ASYNC_CONN_URI, echo=False)
 Base = declarative_base()
 Session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
@@ -28,7 +33,7 @@ async def create_pg_docker(cmd):
     await result.communicate()
 
 
-#   logger.info('____pg docker rdy')
+logger.info('____pg docker rdy')
 
 
 async def created_db_tables():
