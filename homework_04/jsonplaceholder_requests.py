@@ -1,5 +1,6 @@
 import aiohttp
-# import asyncio
+import asyncio
+
 
 USERS_DATA_URL = "https://jsonplaceholder.typicode.com/users"
 POSTS_DATA_URL = "https://jsonplaceholder.typicode.com/posts"
@@ -11,6 +12,6 @@ async def fetch_json(url):
             return await response.json()
 
 
-# if __name__ == '__main__':
-#     asyncio.get_event_loop().run_until_complete(fetch_json(USERS_DATA_URL))
-#     asyncio.run(fetch_json(USERS_DATA_URL))
+if __name__ == '__main__':
+     asyncio.get_event_loop().run_until_complete(fetch_json(USERS_DATA_URL))
+     asyncio.run(fetch_json(USERS_DATA_URL))
