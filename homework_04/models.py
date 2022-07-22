@@ -23,7 +23,7 @@ PG_ASYNC_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") \
 
 engine = create_async_engine(PG_ASYNC_CONN_URI, echo=True)
 Base = declarative_base()
-Session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=True)
+Session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
 
 cmd = 'docker compose up -d'
