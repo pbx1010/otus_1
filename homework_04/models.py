@@ -25,7 +25,6 @@ engine = create_async_engine(PG_ASYNC_CONN_URI, echo=False)
 Base = declarative_base()
 Session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
-
 cmd = 'docker compose up -d'
 
 
@@ -62,7 +61,7 @@ async def save_post_in_db(p_data):
                 title = post['title']
                 body = post['body']
                 user_id = post['userId']
-                post = Post(title=title, description=body, user_id=user_id)
+                post = Post(title=title, body=body, user_id=user_id)
                 session.add(post)
 
 
@@ -94,11 +93,10 @@ class Post(Base):
     title = Column(String, nullable='', default='', server_default='')
     body = Column(String, nullable='', default='', server_default='')
 
-
     user = relationship('User', back_populates='posts')
 
     def __str__(self):
-        return f'{self.__class__.__name__}(id={self.id}, title={self.title!r}, description={self.description!r})'
+        return f'{self.__class__.__name__}(id={self.id}, title={self.title!r}, body={self.body!r})'
 
     def __repr__(self):
         return str(self)
