@@ -92,7 +92,7 @@ class Post(Base):
     description = Column(String, nullable='', default='', server_default='')
     # user = Column(Integer, ForeignKey('user.id'), nullable=False)
     user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
-    users = relationship('User', back_populates='posts')
+    user = relationship('User', back_populates='posts')
 
     def __str__(self):
         return f'{self.__class__.__name__}(id={self.id}, title={self.title!r}, description={self.description!r})'
