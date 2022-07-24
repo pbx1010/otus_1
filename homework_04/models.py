@@ -1,5 +1,4 @@
 import os
-from datetime import datetime
 from loguru import logger
 import asyncio
 
@@ -7,17 +6,15 @@ from sqlalchemy import (
     Column,
     String,
     Integer,
-    DateTime,
     ForeignKey,
-    func
 )
 
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 
 # PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://username:passwd!@localhost/blog"
-
 # PG_ASYNC_CONN_URI = 'postgresql+asyncpg://username:passwd!@localhost/blog'
+
 PG_ASYNC_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") \
                     or "postgresql+asyncpg://username:passwd!@localhost/blog"
 
@@ -53,7 +50,6 @@ async def save_user_in_db(u_data):
                 session.add(user)
 
 
-# cоздаем ф-ю, которая скачивает с сайта посты и сохраняет их в БД
 async def save_post_in_db(p_data):
     async with Session() as session:
         async with session.begin():
@@ -65,7 +61,6 @@ async def save_post_in_db(p_data):
                 session.add(post)
 
 
-# создаем модель таблицы User и Post
 class User(Base):
     __tablename__ = 'user'
 
@@ -73,7 +68,6 @@ class User(Base):
     name = Column(String, nullable=False, default='', server_default='')
     username = Column(String, nullable=False, default='', server_default='')
     email = Column(String, nullable=False, default='', server_default='')
-    # created_at = Column(DateTime, nullable=False, default=datetime.utcnow, server_default=func.now())
 
     posts = relationship('Post', back_populates='user')
 
