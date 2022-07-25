@@ -1,5 +1,6 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, request, redirect, url_for
+from flask_migrate import Migrate
 from sqlalchemy import create_engine
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import Session, sessionmaker
@@ -12,11 +13,15 @@ app.config.update(
     ENV="development",
     # SECRET_KEY="qwertytrewsupersecret",
     SQLALCHEMY_TRACK_MODIFICATIONS=False,
-    SQLALCHEMY_DATABASE_URI="postgresql+pg8000://username:passwd!@localhost:5432/blog",
+    SQLALCHEMY_DATABASE_URI="postgresql+pg8000://username:passwd!@pg:5432/blog",
 )
-db = SQLAlchemy(app)
-engine = create_engine("postgresql+pg8000://username:passwd!@localhost:5432/blog")
-session = sessionmaker(bind=engine)
+
+db = SQLAlchemy()
+# engine = create_engine("postgresql+pg8000://username:passwd!@pg:5432/blog")
+# session = sessionmaker(bind=engine)
+
+db.init_app(app)
+migrate = Migrate(app, db, compare_type=True)
 
 
 class Users(db.Model):
@@ -83,7 +88,7 @@ def register():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=5000)
 
 
 # def runserver():
