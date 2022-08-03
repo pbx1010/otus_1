@@ -13,9 +13,14 @@
 #FROM tiangolo/uwsgi-nginx:python3.9
 
 FROM tiangolo/uwsgi-nginx-flask:python3.10
-COPY . /app
-#WORKDIR /app
-COPY /web/requirements.txt requirements.txt
 
+
+# WORKDIR /app
+
+COPY /web/requirements.txt requirements.txt
 RUN pip install -r requirements.txt
-# CMD ["python","app.py"]
+
+COPY . /app
+
+
+CMD ["python","app.py"]

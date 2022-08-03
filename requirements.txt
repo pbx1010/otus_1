@@ -6,3 +6,5 @@ pytest~=7.1.2
 Faker~=13.13.0
 flask~=2.1.2
 utils~=1.0.1
+Werkzeug~=2.1.2
+alembic~=1.8.0

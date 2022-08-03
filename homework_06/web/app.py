@@ -8,6 +8,8 @@ from datetime import datetime
 
 # from markupsafe import escape
 
+db = SQLAlchemy()
+
 app = Flask(__name__)
 app.config.update(
     ENV="development",
@@ -16,9 +18,9 @@ app.config.update(
     SQLALCHEMY_DATABASE_URI="postgresql+pg8000://username:passwd!@pg:5432/blog",
 )
 
-db = SQLAlchemy()
-# engine = create_engine("postgresql+pg8000://username:passwd!@pg:5432/blog")
-# session = sessionmaker(bind=engine)
+
+    # engine = create_engine("postgresql+pg8000://username:passwd!@pg:5432/blog")
+    # session = sessionmaker(bind=engine)
 
 db.init_app(app)
 migrate = Migrate(app, db, compare_type=True)
