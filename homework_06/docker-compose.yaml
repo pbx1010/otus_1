@@ -5,8 +5,8 @@ services:
     build:
       context: .
       dockerfile: docker-build/web/Dockerfile
-#    ports:
-#      - "5000:80"
+    ports:
+      - "5000:80"
     volumes:
       - ./web:/app
     environment:

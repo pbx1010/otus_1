@@ -5,15 +5,14 @@ from sqlalchemy import create_engine
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import Session, sessionmaker
 from datetime import datetime
-
-# from markupsafe import escape
+from markupsafe import escape
 
 db = SQLAlchemy()
 
 app = Flask(__name__)
 app.config.update(
     ENV="development",
-    # SECRET_KEY="qwertytrewsupersecret",
+    SECRET_KEY="qwertytrewsupersecret",
     SQLALCHEMY_TRACK_MODIFICATIONS=False,
     SQLALCHEMY_DATABASE_URI="postgresql+pg8000://username:passwd!@pg:5432/blog",
 )
@@ -90,7 +89,7 @@ def register():
 
 
 if __name__ == "__main__":
-    app.run(port=5000)
+    app.run()
 
 
 # def runserver():
