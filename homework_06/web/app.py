@@ -17,10 +17,6 @@ app.config.update(
     SQLALCHEMY_DATABASE_URI="postgresql+pg8000://username:passwd!@pg:5432/blog",
 )
 
-
-    # engine = create_engine("postgresql+pg8000://username:passwd!@pg:5432/blog")
-    # session = sessionmaker(bind=engine)
-
 db.init_app(app)
 migrate = Migrate(app, db, compare_type=True)
 
@@ -68,7 +64,7 @@ def index():
 def register():
     if request.method == "POST":
 
-#        try:
+        try:
             hash = generate_password_hash(request.form['psw'])
             u = Users(email=request.form['email'], psw=hash)
             db.session.add(u)
@@ -79,18 +75,13 @@ def register():
             print(p)
             db.session.add(p)
             db.session.commit()
-        # except:
-        #     db.session.rollback()
-        #     print("Ошибка добавления в БД")
-
+        except:
+            db.session.rollback()
+            print("Ошибка добавления в БД")
             return redirect(url_for('index'))
 
     return render_template("register.html", title="Регистрация")
 
 
 if __name__ == "__main__":
-    app.run()
-
-
-# def runserver():
-#     app.run(debug=True, port=5000)
+    app.run(port=5000)
